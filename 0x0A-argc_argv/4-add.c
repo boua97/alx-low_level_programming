@@ -1,57 +1,34 @@
-#include <stdio.h> /* printf */
-#include <stdlib.h> /* atoi */
-#include <stdbool.h> /* bool data type */
+#include <stdio.h>
+#include <stdlib.h>
 
 /**
- * is_num - iterate through each argv to test if it's a number
- * @argvv: a argv
- * Return: true only if entire string is a number, false if not
- */
-
-bool is_num(char *argvv)
-{
-	int j = 0;
-
-	for (j = 0; argvv[j]; j++)
-	{
-		if (!(argvv[j] >= '0' && argvv[j] <= '9'))
-			return (0);
-	}
-	return (1);
-}
-
-/**
- * main - print sum if all arguments given are numbers
- * @argc: argument counter
- * @argv: arguments
- * Return: 0 on success, 1 if an argument wasn't a number
+ * main - program that multiplies two numbers.
+ *
+ * @argc: argc
+ * @argv: argv
+ *
+ * Return: 0-succes, 1 if error
  */
 
 int main(int argc, char *argv[])
 {
-	int i = 1;
-	int sum = 0;
+	int v, w, s = 0;
 
-	/* validate input */
-	if (argc == 1)
+	for (v = 1; v < argc; v++)
 	{
-		printf("0\n");
-		return (0);
-	}
-
-	/* check all arguments to add numbers */
-	while (i < argc)
-	{
-		if (is_num(argv[i]))
-			sum += atoi(argv[i]);
-		else
+		for (w = 0; argv[v][w] != '\0'; w++)
 		{
-			printf("Error\n");
-			return (1);
+			if (argv[v][w] < '0' || argv[v][w] > '9')
+			{
+				printf("Error\n");
+				return (1);
+			}
 		}
-		i++;
+
+		s += atoi(argv[v]);
 	}
-	printf("%d\n", sum);
+
+	printf("%d\n", s);
 
 	return (0);
 }

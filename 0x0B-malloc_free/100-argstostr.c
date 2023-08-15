@@ -1,50 +1,43 @@
 #include "main.h"
-#include <stdlib.h>
 /**
-  *argstostr - concatenates all arguments of the program.
-  *@ac: argument count.
-  *@av: pointer to array of size ac.
-  *Return: NULL if ac == 0 or av == null, Pointer to new string.
-  *NULL on fail.
-  */
+ * argstostr - function that concatenates all the arguments of your program.
+ * @ac: takes in width of grid
+ * @av: height of grid
+ * Return: the args one line at a time
+ */
+
 char *argstostr(int ac, char **av)
 {
-	int i, j, k, size;
-	char *arg;
+	char *st;
+	int co = 0, v = 0, w = 0, u = 0;
 
-	size = 0;
-	k = 0;
 	if (ac == 0 || av == NULL)
 		return (NULL);
-	i = 0;
-	while (i < ac)
+	while (v < ac)
 	{
-		j = 0;
-		while (av[i][j])
+		w = 0;
+		while (av[v][w] != '\0')
 		{
-			size++;
-			j++;
+			co++;
+			w++;
 		}
-		size++;
-		i++;
+		v++;
 	}
-	arg = malloc((sizeof(char) * size) + 1);
-	if (arg == NULL)
+	co = co + ac + 1;
+	st = malloc(sizeof(char) * co);
+	if (st == NULL)
+	{
 		return (NULL);
-	i = 0;
-	while (i < ac)
-	{
-		j = 0;
-		while (av[i][j])
-		{
-			arg[k] = av[i][j];
-			j++;
-			k++;
-		}
-		arg[k] = '\n';
-		k++;
-		i++;
 	}
-	arg[k] = '\0';
-	return (arg);
+	for (v = 0; v < ac; v++)
+	{
+		for (w = 0; av[v][w] != '\0'; w++)
+		{
+			st[u] = av[v][w];
+			u++;
+		}
+		st[u] = '\n';
+		u++;
+	}
+	return (st);
 }

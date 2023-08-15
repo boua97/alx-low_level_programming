@@ -1,34 +1,45 @@
 #include <stdio.h>
 
 /**
- *main - print all combinations of three different digits
- *Return: Always 0 (Success)
+ * main - entry point
+ *
+ * Description: prints all possible different combinations of three digits.
+ *
+ * Return: 0=success
  */
 
 int main(void)
 {
-	int one;
-	int ten;
-	int hundred;
+	int d1 = 0, d2, d3;
 
-	for (hundred = '0'; hundred <= '9'; hundred++) /*hundreds place*/
+	while (d1 <= 9)
 	{
-		for (ten = (hundred + 1); ten <= '9'; ten++) /*tens=100s+1*/
+	d2 = 0;
+	while (d2 <= 9)
+	{
+		d3 = 0;
+		while (d3 <= 9)
 		{
-			for (one = (ten + 1); one <= '9'; one++) /*ones*/
-			{
-				putchar(hundred);
-				putchar(ten);
-				putchar(one);
-				if (hundred != '7' || ten != '8' || one != '9')
-				{
-					putchar(',');
-					putchar(' ');
-				}
-			}
+
+		if (d2 < d3 && d1 < d2)
+		{
+			putchar(d1 + '0');
+			putchar(d2 + '0');
+			putchar(d3 + '0');
+
+		if (d1 != 7 || d2 != 8 || d3 != 9)
+		{
+			putchar(',');
+			putchar(' ');
 		}
+		}
+		d3++;
+		}
+		d2++;
+	}
+	d1++;
 	}
 	putchar('\n');
-
-	return (0);
+return (0);
 }
+

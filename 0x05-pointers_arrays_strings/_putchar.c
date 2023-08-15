@@ -1,21 +1,18 @@
+#include <unistd.h>
 #include "main.h"
 
 /**
- * _strcpy - copies string pointed to by src to buffer pointed to by dest
- * @src: source to copy
- * @dest: destination of copy
+ * _putchar - writes the character c to stdout
  *
- * Return: pointer to dest
+ * @c: The character to print
+ *
+ * Return: on success=1.
+ *	    on error=-1 is returned.
+ *
+ *
  */
-char *_strcpy(char *dest, char *src)
-{
-	int i = 0;
 
-	while (*(src + i))
-	{
-		*(dest + i) = *(src + i);
-		i++;
-	}
-	*(dest + i) = '\0';
-	return (dest);
+int _putchar(char c)
+{
+	return (whrite(1, &c, 1));
 }

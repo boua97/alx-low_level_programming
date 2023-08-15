@@ -1,15 +1,21 @@
 #include "main.h"
-#include "6-abs.c"
 /**
- * print_last_digit - main function
+ * print_last_digit - function that prints the last digit of a number.
  *
- * @n: integer to get last digit of
- * Return: last digit of n
+ *@n: imput numbre
+ *
+ * Return: the last
  *
  */
 
 int print_last_digit(int n)
 {
-	_putchar('0' + _abs(n % 10));
-	return (_abs(n % 10));
+	int ld;
+
+	if (n < 0)
+		ld = (-1) * (n % 10);
+	else
+		ld = n % 10;
+	_putchar(ld + '0');
+	return (ld);
 }

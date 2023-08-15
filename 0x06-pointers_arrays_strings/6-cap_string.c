@@ -1,34 +1,31 @@
 #include "main.h"
 
 /**
- * cap_string - capitalizes everey word of a string
- * @s: string to modify
+ * cap_string - capitalizes all words of a string.
  *
- * Return: the resulting string
+ * @ch: input string.
+ *
+ * Return: string.
  */
-char *cap_string(char *s)
+
+char *cap_string(char *ch)
 {
-	int i, j;
+	int v;
 
-	char spe[13] = {' ', '\t', '\n', ',', ';', '.',
-		'!', '?', '"', '(', ')', '{', '}'};
-
-	for (i = 0; s[i] != '\0'; i++)
+	for (v = 0; ch[v] != '\0'; v++)
 	{
-		if (i == 0 && s[i] >= 'a' && s[i] <= 'z')
-			s[i] -= 32;
-
-		for (j = 0; j < 13; j++)
+		if (ch[v] >= 97 && ch[v] <= 122)
 		{
-			if (s[i] == spe[j])
+			if (v == 0)
+				ch[v] -= 32;
+			else
 			{
-				if (s[i + 1] >= 'a' && s[i + 1] <= 'z')
+				if (ch[v - 1] == ' ' || ch[v - 1] == '\n' || ch[v - 1] == '\t' || ch[v - 1] == ',' || ch[v - 1] == ';' || ch[v - 1] == '.' || ch[v - 1] == '!' || ch[v - 1] == '?' || ch[v - 1] == '\"' || ch[v - 1] == '(' || ch[v - 1] == ')' || ch[v - 1] == '{' || ch[v - 1] == '}')
 				{
-					s[i + 1] -= 32;
+					ch[v] -= 32;
 				}
 			}
 		}
 	}
-
-	return (s);
+	return (ch);
 }
